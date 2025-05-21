@@ -3,7 +3,6 @@ let container=document.querySelector(".container");
 let msg=document.querySelector("#msg");
 let newGame=document.querySelector("#new_game");
 let msg_container=document.querySelector(".msg_container")
-let strtbtn=document.querySelector("#strtbtn");
 let restbtn=document.querySelector("#resetbtn");
 let plrTurn=document.querySelector("#plrTurn");
 let curentPlayer=true;
@@ -17,29 +16,24 @@ const winingCondition=[
     [0,4,8],
     [2,4,6]
 ]
-strtbtn.addEventListener("click",start());
-newGame.addEventListener("click",startAgain());
-restbtn.addEventListener("click",()=>{
-    curentPlayer=true;
+newGame.addEventListener("click",resetFunction);
+
+restbtn.addEventListener("click",resetFunction);
+
+function resetFunction(){  
+   curentPlayer=true;
+    plrTurn.innerText="Player X Turn!";
     for(let box of btn){
         box.disabled=false;
         box.innerText="";
     }
-})
-function startAgain(){
-newGame.addEventListener("click",()=>{
-    // curentPlayer=true;
-    // for(let box of btn){
-    //     box.disabled=false;
-    //     box.innerText="";
-    // }
-    // msg_container.classList.add("hide");
-    start();
-})
+    msg_container.classList.add("hide");
+    plrTurn.style.display="block";
 }
-function start(){
-    plrTurn.innerText="Player X Turn!";
+
+
 btn.forEach((box)=>{
+    plrTurn.innerText="Player X Turn!";
     box.addEventListener("click",()=>{
        if(curentPlayer){
         plrTurn.innerText="Player O Turn!";
@@ -54,11 +48,13 @@ btn.forEach((box)=>{
         box.disabled=true;
        }
         winFunction();
+        drawFunction();
     })
 })
-}
+
+
 function showMsg(evnt){
-    msg.innerHTML=`Congratulations winner is ${evnt}`;
+    msg.innerHTML=`Congratulations! winner is ${evnt}`;
     msg_container.classList.remove("hide");
     for(let box of btn){
         box.disabled=true;
@@ -77,3 +73,28 @@ function winFunction(){
         }
     }
 }
+
+function drawFunction(){
+        let position1=btn[0].innerText;
+        let position2=btn[1].innerText;
+        let position3=btn[2].innerText;
+        let position4=btn[3].innerText;
+        let position5=btn[4].innerText;
+        let position6=btn[5].innerText;
+        let position7=btn[6].innerText;
+        let position8=btn[7].innerText;
+        let position9=btn[8].innerText;
+        if(position1!==""&&position2!==""&&position3!=="" 
+            && position4!==""&&position5!=="" && position6!==""
+            &&position7!==""&&position8!==""&&position9!==""
+        )
+        {
+            msg.innerHTML=`Match Draw!`;
+            msg_container.classList.remove("hide");
+            for(let box of btn){
+                box.disabled=true;
+            }
+            plrTurn.style.display="none";
+        }
+}
+
