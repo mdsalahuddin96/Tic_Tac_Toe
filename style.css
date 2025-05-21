@@ -33,16 +33,7 @@ body{
     border: none;
     box-shadow: 3px 3px 3px 0.1vmin black;
 }
-#strtbtn{
-    padding: 2vmin;
-    font-size: 3vmin;
-    color: white;
-    background-color: rgb(31, 48, 4);
-    border-radius: 2vmin;
-    border: none;
-    box-shadow: 3px 3px 3px 0.1vmin black;
-    margin:5px;
-}
+
 #resetbtn{
     padding: 2vmin;
     font-size: 3vmin;
@@ -53,7 +44,11 @@ body{
     box-shadow: 3px 3px 3px 0.1vmin black;
 }
 .msg_container{
-    height: 30vmin;
+    height: 100vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 #msg{
     font-size: 5vmin;
@@ -67,8 +62,9 @@ body{
     border: none;
     box-shadow: 3px 3px 3px 0.1vmin black;
 }
+
 .hide{
-    display: none;
+   display: none;
 }
 #plrTurn{
     font-size: 5vmin;
